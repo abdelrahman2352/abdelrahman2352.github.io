@@ -6,8 +6,6 @@ import ProgressBar from '../components/ProgressBar';
 import { downloadBlob } from '../utils/imageUtils';
 import * as pdfjsLib from 'pdfjs-dist';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).href;
-
 export default function PDFToJPG() {
   const [file, setFile] = useState(null);
   const [format, setFormat] = useState('image/jpeg');
@@ -16,7 +14,10 @@ export default function PDFToJPG() {
   const [error, setError] = useState('');
   const [pageCount, setPageCount] = useState(0);
 
-  useEffect(() => { document.title = 'تحويل PDF إلى صور مجانًا - أدوات دُرّة'; }, []);
+  useEffect(() => {
+    document.title = 'تحويل PDF إلى صور مجانًا - أدوات دُرّة';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).href;
+  }, []);
 
   const handleFileSelect = async (files) => {
     const f = files[0];
