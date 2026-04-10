@@ -74,7 +74,7 @@ export async function imagesToPDF(imageFiles) {
       const pngBytes = await new Promise((resolve, reject) => {
         canvas.toBlob(b => {
           if (b) b.arrayBuffer().then(resolve);
-          else reject(new Error('فشل إنشاء الصورة'));
+          else reject(new Error('فشل إنشاء blob للصورة أثناء تضمينها في PDF'));
         }, 'image/png');
       });
       img = await doc.embedPng(pngBytes);

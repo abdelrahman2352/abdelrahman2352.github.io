@@ -22,7 +22,7 @@ export async function convertImageFormat(file, targetFormat) {
   return new Promise((resolve, reject) => {
     canvas.toBlob(blob => {
       if (blob) resolve(blob);
-      else reject(new Error('فشل تحويل الصورة'));
+      else reject(new Error('فشل إنشاء blob أثناء تحويل الصورة إلى الصيغة المطلوبة'));
     }, targetFormat, 0.9);
   });
 }
