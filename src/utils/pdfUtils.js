@@ -71,8 +71,11 @@ export async function imagesToPDF(imageFiles) {
       canvas.width = bitmap.width;
       canvas.height = bitmap.height;
       ctx.drawImage(bitmap, 0, 0);
-      const pngBytes = await new Promise(resolve => {
-        canvas.toBlob(b => b.arrayBuffer().then(resolve), 'image/png');
+      const pngBytes = await new Promise((resolve, reject) => {
+        canvas.toBlob(b => {
+          if (b) b.arrayBuffer().then(resolve);
+          else reject(new Error('فشل إنشاء الصورة'));
+        }, 'image/png');
       });
       img = await doc.embedPng(pngBytes);
     }

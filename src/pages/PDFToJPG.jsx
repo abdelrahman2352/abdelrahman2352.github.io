@@ -81,7 +81,7 @@ export default function PDFToJPG() {
       </div>
 
       {error && <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">{error}</div>}
-      {status === 'processing' && <ProgressBar value={progress} label={`جارٍ التحويل... صفحة ${Math.ceil(progress / 100 * pageCount)} من ${pageCount}`} />}
+      {status === 'processing' && <ProgressBar value={progress} label={`جارٍ التحويل... صفحة ${Math.max(1, Math.ceil(progress * pageCount / 100))} من ${pageCount}`} />}
       {status === 'done' && <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-4">✅ تم التحويل بنجاح!</div>}
 
       <button onClick={handleConvert} disabled={!file || status === 'processing'}
