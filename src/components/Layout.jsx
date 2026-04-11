@@ -1,66 +1,149 @@
 import { Link } from 'react-router-dom';
 
+const pdfLinks = [
+  { to: '/دمج-pdf', label: 'دمج PDF' },
+  { to: '/تقسيم-pdf', label: 'تقسيم PDF' },
+  { to: '/حذف-صفحات-pdf', label: 'حذف صفحات PDF' },
+  { to: '/تدوير-pdf', label: 'تدوير PDF' },
+  { to: '/تحويل-صور-الى-pdf', label: 'تحويل الصور إلى PDF' },
+  { to: '/pdf-الى-jpg', label: 'PDF إلى صور' },
+];
+
+const imageLinks = [
+  { to: '/ضغط-الصور', label: 'ضغط الصور' },
+  { to: '/تحويل-صيغ-الصور', label: 'تحويل صيغ الصور' },
+  { to: '/تغيير-حجم-الصور', label: 'تغيير حجم الصور' },
+  { to: '/قص-الصور', label: 'قص الصور' },
+  { to: '/تدوير-وقلب-الصور', label: 'تدوير وقلب الصور' },
+  { to: '/علامة-مائية', label: 'إضافة علامة مائية' },
+];
+
+const extraLinks = [
+  { to: '/اطار-الصور', label: 'إضافة إطار للصور' },
+  { to: '/ضبط-الالوان', label: 'ضبط الألوان' },
+  { to: '/تحويل-الى-رمادي', label: 'تحويل إلى رمادي' },
+  { to: '/ضبط-نسبة-العرض', label: 'ضبط نسبة العرض' },
+];
+
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-blue-700">
-            أدوات دُرّة
+    <div className="min-h-screen" style={{ background: '#09090b' }} dir="rtl">
+      {/* ── Sticky glass header ─────────────────────────── */}
+      <header
+        className="sticky top-0 z-50"
+        style={{
+          background: 'rgba(9, 9, 11, 0.88)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(255,255,255,0.07)',
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-black text-sm shrink-0 transition-transform duration-200 group-hover:scale-105"
+              style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)' }}
+            >
+              د
+            </div>
+            <span className="text-lg font-bold text-white tracking-tight">أدوات دُرّة</span>
           </Link>
-          <nav className="hidden md:flex gap-4 text-sm text-gray-600" aria-label="التنقل الرئيسي">
-            <Link to="/دمج-pdf" className="hover:text-blue-600">دمج PDF</Link>
-            <Link to="/تقسيم-pdf" className="hover:text-blue-600">تقسيم PDF</Link>
-            <Link to="/pdf-الى-jpg" className="hover:text-blue-600">PDF إلى JPG</Link>
-            <Link to="/ضغط-الصور" className="hover:text-blue-600">ضغط الصور</Link>
-            <Link to="/تحويل-صيغ-الصور" className="hover:text-blue-600">تحويل الصور</Link>
+
+          <nav className="hidden md:flex items-center gap-0.5" aria-label="التنقل الرئيسي">
+            {[
+              { to: '/دمج-pdf', label: 'دمج PDF' },
+              { to: '/تقسيم-pdf', label: 'تقسيم PDF' },
+              { to: '/pdf-الى-jpg', label: 'PDF → JPG' },
+              { to: '/ضغط-الصور', label: 'ضغط الصور' },
+              { to: '/تحويل-صيغ-الصور', label: 'تحويل الصور' },
+            ].map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className="px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-150"
+                style={{ color: '#a1a1aa' }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = '#fafafa';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.07)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = '#a1a1aa';
+                  e.currentTarget.style.background = 'transparent';
+                }}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
         </div>
       </header>
-      <main className="max-w-5xl mx-auto px-4 py-8">
+
+      {/* ── Main content ────────────────────────────────── */}
+      <main className="max-w-6xl mx-auto px-4 py-8 dark-content">
         {children}
       </main>
-      <footer className="bg-white border-t border-gray-100 mt-12" aria-label="تذييل الصفحة">
-        <div className="max-w-5xl mx-auto px-4 py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold text-gray-800 mb-3">أدوات PDF</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><Link to="/دمج-pdf" className="hover:text-blue-600">دمج PDF</Link></li>
-                <li><Link to="/تقسيم-pdf" className="hover:text-blue-600">تقسيم PDF</Link></li>
-                <li><Link to="/حذف-صفحات-pdf" className="hover:text-blue-600">حذف صفحات PDF</Link></li>
-                <li><Link to="/تدوير-pdf" className="hover:text-blue-600">تدوير PDF</Link></li>
-                <li><Link to="/تحويل-صور-الى-pdf" className="hover:text-blue-600">تحويل الصور إلى PDF</Link></li>
-                <li><Link to="/pdf-الى-jpg" className="hover:text-blue-600">PDF إلى صور</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-800 mb-3">أدوات الصور</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><Link to="/ضغط-الصور" className="hover:text-blue-600">ضغط الصور</Link></li>
-                <li><Link to="/تحويل-صيغ-الصور" className="hover:text-blue-600">تحويل صيغ الصور</Link></li>
-                <li><Link to="/تغيير-حجم-الصور" className="hover:text-blue-600">تغيير حجم الصور</Link></li>
-                <li><Link to="/قص-الصور" className="hover:text-blue-600">قص الصور</Link></li>
-                <li><Link to="/تدوير-وقلب-الصور" className="hover:text-blue-600">تدوير وقلب الصور</Link></li>
-                <li><Link to="/علامة-مائية" className="hover:text-blue-600">إضافة علامة مائية</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-800 mb-3">أدوات إضافية</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><Link to="/اطار-الصور" className="hover:text-blue-600">إضافة إطار للصور</Link></li>
-                <li><Link to="/ضبط-الالوان" className="hover:text-blue-600">ضبط الألوان</Link></li>
-                <li><Link to="/تحويل-الى-رمادي" className="hover:text-blue-600">تحويل إلى رمادي</Link></li>
-                <li><Link to="/ضبط-نسبة-العرض" className="hover:text-blue-600">ضبط نسبة العرض</Link></li>
-              </ul>
-            </div>
+
+      {/* ── Footer ──────────────────────────────────────── */}
+      <footer
+        className="mt-20"
+        aria-label="تذييل الصفحة"
+        style={{ background: '#09090b', borderTop: '1px solid rgba(255,255,255,0.07)' }}
+      >
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          {/* Brand */}
+          <div className="mb-10">
+            <Link to="/" className="inline-flex items-center gap-2.5 mb-3">
+              <div
+                className="w-7 h-7 rounded-md flex items-center justify-center text-white font-black text-xs"
+                style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)' }}
+              >
+                د
+              </div>
+              <span className="text-base font-bold text-white">أدوات دُرّة</span>
+            </Link>
+            <p className="text-sm max-w-xs" style={{ color: '#52525b' }}>
+              أكثر من 16 أداة مجانية لـ PDF والصور، تعمل كاملةً داخل متصفحك.
+            </p>
           </div>
-          <div className="border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
-            <p className="mb-1">🔒 جميع العمليات تتم داخل متصفحك — ملفاتك لا تُرفع لأي سيرفر.</p>
-            <p>© {new Date().getFullYear()} أدوات دُرّة — جميع الأدوات مجانية بدون تسجيل</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10">
+            <FooterCol title="أدوات PDF" links={pdfLinks} />
+            <FooterCol title="أدوات الصور" links={imageLinks} />
+            <FooterCol title="أدوات إضافية" links={extraLinks} />
+          </div>
+
+          <div
+            className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.07)', color: '#3f3f46' }}
+          >
+            <span>© {new Date().getFullYear()} أدوات دُرّة — جميع الأدوات مجانية</span>
+            <span>🔒 ملفاتك لا تُرفع لأي سيرفر — خصوصية تامة</span>
           </div>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function FooterCol({ title, links }) {
+  return (
+    <div>
+      <h3 className="text-sm font-bold text-white mb-4">{title}</h3>
+      <ul className="space-y-2.5">
+        {links.map(({ to, label }) => (
+          <li key={to}>
+            <Link
+              to={to}
+              className="text-sm transition-colors duration-150"
+              style={{ color: '#52525b' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#a1a1aa'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#52525b'; }}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -17,13 +17,23 @@ export default function FileDropzone({ accept, multiple = false, onFiles, label 
       onDragLeave={() => setDragging(false)}
       onDrop={handleDrop}
       onClick={() => inputRef.current.click()}
-      className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-colors ${
-        dragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-400 bg-white'
-      }`}
+      className="rounded-xl p-10 text-center cursor-pointer transition-all duration-200"
+      style={{
+        border: dragging
+          ? '2px dashed #7c3aed'
+          : '2px dashed rgba(255,255,255,0.12)',
+        background: dragging ? 'rgba(124,58,237,0.07)' : 'rgba(255,255,255,0.02)',
+        boxShadow: dragging ? '0 0 20px rgba(124,58,237,0.15)' : 'none',
+      }}
     >
-      <div className="text-4xl mb-3">📁</div>
-      <p className="text-gray-600 font-medium">{label || 'اسحب الملفات هنا أو انقر للاختيار'}</p>
-      <p className="text-gray-400 text-sm mt-1">أو انقر لتصفح الملفات</p>
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mx-auto mb-4"
+        style={{ background: 'rgba(124,58,237,0.15)' }}
+      >
+        📁
+      </div>
+      <p className="font-semibold text-white text-sm">{label || 'اسحب الملفات هنا أو انقر للاختيار'}</p>
+      <p className="text-xs mt-1.5" style={{ color: '#52525b' }}>أو انقر لتصفح الملفات</p>
       <input
         ref={inputRef}
         type="file"

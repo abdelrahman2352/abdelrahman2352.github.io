@@ -33,7 +33,6 @@ const faqItems = [
   { q: 'هل الأدوات متاحة باللغة العربية بالكامل؟', a: 'نعم! أدوات دُرّة هي من النادر جدًا — الواجهة والتعليمات والأزرار كلها بالعربية الكاملة، مما يجعلها الخيار الأول للمستخدمين العرب.' },
 ];
 
-
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -54,64 +53,158 @@ export default function HomePage() {
         jsonLd={jsonLd}
       />
 
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">أدوات PDF والصور — بالعربي الكامل</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          أكثر من 16 أداة مجانية وسريعة تعمل داخل المتصفح — ملفاتك لا تُرفع لأي سيرفر
-        </p>
-        <div className="mt-4 flex flex-wrap justify-center gap-3">
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
-            <span>🔒</span>
-            <span>100% خصوصية — يعمل داخل المتصفح</span>
-          </div>
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
-            <span>🇸🇦</span>
-            <span>واجهة عربية بالكامل</span>
-          </div>
-        </div>
-      </div>
+      {/* ── Hero ──────────────────────────────────────────────── */}
+      <section className="relative text-center pt-16 pb-20 mb-6 overflow-hidden rounded-3xl"
+        style={{ background: 'radial-gradient(ellipse at 50% -10%, rgba(124,58,237,0.2) 0%, transparent 65%)' }}
+      >
+        {/* Subtle grid overlay */}
+        <div
+          className="absolute inset-0 rounded-3xl pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
+        />
 
-      <section className="bg-gradient-to-l from-blue-50 to-indigo-50 border border-blue-100 rounded-xl p-6 mb-10">
-        <div className="flex items-start gap-4">
-          <span className="text-4xl" aria-hidden="true">🌍</span>
-          <div>
-            <h2 className="text-lg font-bold text-blue-800 mb-1">الأداة العربية الأولى من نوعها</h2>
-            <p className="text-blue-700 text-sm leading-relaxed">
-              معظم أدوات PDF والصور المجانية على الإنترنت إنجليزية فقط. <strong>أدوات دُرّة</strong> مصممة للمستخدم العربي من الألف إلى الياء — كل زر وكل رسالة وكل خطوة بالعربية الكاملة، مع دعم الاتجاه من اليمين إلى اليسار.
-            </p>
+        <div className="relative z-10 max-w-3xl mx-auto px-4">
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold mb-8"
+            style={{
+              background: 'rgba(124,58,237,0.15)',
+              border: '1px solid rgba(124,58,237,0.3)',
+              color: '#c4b5fd',
+            }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full animate-pulse"
+              style={{ background: '#a78bfa' }}
+            />
+            الأداة العربية الأولى لملفات PDF والصور
+          </div>
+
+          {/* Heading */}
+          <h1
+            className="text-5xl sm:text-6xl font-black leading-tight mb-6 tracking-tight"
+            style={{ color: '#fafafa' }}
+          >
+            أدوات{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #f59e0b 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              PDF والصور
+            </span>
+            <br />
+            <span className="text-4xl sm:text-5xl">بالعربي الكامل</span>
+          </h1>
+
+          <p
+            className="text-lg sm:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
+            style={{ color: '#71717a' }}
+          >
+            أكثر من 16 أداة مجانية وسريعة — ملفاتك لا تُرفع لأي سيرفر، كل شيء يعمل على جهازك.
+          </p>
+
+          {/* Trust badges */}
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { icon: '🔒', text: '100% خصوصية', sub: 'يعمل داخل المتصفح' },
+              { icon: '🆓', text: 'مجاني تماماً', sub: 'بدون تسجيل' },
+              { icon: '🇸🇦', text: 'عربي بالكامل', sub: 'واجهة RTL' },
+            ].map(({ icon, text, sub }) => (
+              <div
+                key={text}
+                className="flex items-center gap-2.5 rounded-xl px-4 py-3"
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }}
+              >
+                <span className="text-lg">{icon}</span>
+                <div className="text-right">
+                  <p className="text-xs font-bold text-white leading-tight">{text}</p>
+                  <p className="text-xs leading-tight" style={{ color: '#52525b' }}>{sub}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* ── PDF Tools ─────────────────────────────────────────── */}
       <section className="mb-10" aria-labelledby="pdf-tools-heading">
-        <h2 id="pdf-tools-heading" className="text-2xl font-bold text-gray-800 mb-6">أدوات PDF</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <SectionHeader id="pdf-tools-heading" label="PDF" title="أدوات PDF" count={6} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {tools.slice(0, 6).map(tool => (
             <ToolCard key={tool.href} {...tool} />
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="image-tools-heading">
-        <h2 id="image-tools-heading" className="text-2xl font-bold text-gray-800 mb-6">أدوات الصور</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* ── Image Tools ───────────────────────────────────────── */}
+      <section className="mb-16" aria-labelledby="image-tools-heading">
+        <SectionHeader id="image-tools-heading" label="صور" title="أدوات الصور" count={10} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {tools.slice(6).map(tool => (
             <ToolCard key={tool.href} {...tool} />
           ))}
         </div>
       </section>
 
-      <section className="mt-16 bg-white rounded-xl border border-gray-100 p-8" aria-labelledby="faq-heading">
-        <h2 id="faq-heading" className="text-2xl font-bold text-gray-800 mb-6">أسئلة شائعة</h2>
-        <div className="space-y-6">
+      {/* ── FAQ ───────────────────────────────────────────────── */}
+      <section
+        className="rounded-2xl p-8"
+        aria-labelledby="faq-heading"
+        style={{ background: '#18181b', border: '1px solid rgba(255,255,255,0.07)' }}
+      >
+        <h2
+          id="faq-heading"
+          className="text-2xl font-bold text-white mb-8"
+        >
+          أسئلة شائعة
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {faqItems.map((item, idx) => (
-            <div key={idx}>
-              <h3 className="font-semibold text-gray-800 mb-2">{item.q}</h3>
-              <p className="text-gray-600">{item.a}</p>
+            <div
+              key={idx}
+              className="rounded-xl p-5"
+              style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.05)',
+              }}
+            >
+              <h3 className="font-bold text-white text-sm mb-2">{item.q}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#71717a' }}>{item.a}</p>
             </div>
           ))}
         </div>
       </section>
     </Layout>
+  );
+}
+
+function SectionHeader({ id, label, title, count }) {
+  return (
+    <div className="flex items-center gap-3 mb-5">
+      <div
+        className="w-1 h-6 rounded-full"
+        style={{ background: 'linear-gradient(180deg, #8b5cf6 0%, #6d28d9 100%)' }}
+      />
+      <h2 id={id} className="text-xl font-bold text-white">
+        {title}
+      </h2>
+      <span
+        className="text-xs font-semibold px-2 py-0.5 rounded-full"
+        style={{ background: 'rgba(124,58,237,0.15)', color: '#a78bfa' }}
+      >
+        {count} أداة
+      </span>
+    </div>
   );
 }

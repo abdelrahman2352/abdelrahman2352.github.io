@@ -32,17 +32,25 @@ export default function Breadcrumb({ items }) {
   }, [items]);
 
   return (
-    <nav aria-label="breadcrumb" className="text-sm text-gray-500 mb-4">
+    <nav aria-label="breadcrumb" className="text-sm mb-5">
       <ol className="flex flex-wrap gap-1 items-center list-none p-0 m-0">
         {items.map((item, idx) => (
           <li key={idx} className="flex items-center gap-1">
-            {idx > 0 && <span aria-hidden="true" className="text-gray-400">›</span>}
+            {idx > 0 && (
+              <span aria-hidden="true" style={{ color: '#3f3f46' }}>›</span>
+            )}
             {item.href && idx < items.length - 1 ? (
-              <Link to={item.href} className="hover:text-blue-600 transition-colors">
+              <Link
+                to={item.href}
+                className="transition-colors duration-150"
+                style={{ color: '#71717a' }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#a78bfa'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = '#71717a'; }}
+              >
                 {item.label}
               </Link>
             ) : (
-              <span className="text-gray-700 font-medium">{item.label}</span>
+              <span className="font-medium" style={{ color: '#a1a1aa' }}>{item.label}</span>
             )}
           </li>
         ))}
