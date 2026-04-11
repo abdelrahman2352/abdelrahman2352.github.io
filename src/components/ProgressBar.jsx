@@ -1,14 +1,22 @@
 export default function ProgressBar({ value, label }) {
   return (
     <div className="my-4">
-      {label && <p className="text-sm text-gray-600 mb-1">{label}</p>}
-      <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+      {label && (
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-sm font-medium" style={{ color: '#a1a1aa' }}>{label}</p>
+          <span className="text-sm font-semibold" style={{ color: '#a78bfa' }}>{value}%</span>
+        </div>
+      )}
+      <div className="w-full rounded-full h-2 overflow-hidden" style={{ background: '#27272a' }}>
         <div
-          className="bg-blue-600 h-3 rounded-full transition-all duration-300"
-          style={{ width: `${value}%` }}
+          className="h-2 rounded-full transition-all duration-300"
+          style={{
+            width: `${value}%`,
+            background: 'linear-gradient(90deg, #7c3aed 0%, #a855f7 100%)',
+            boxShadow: '0 0 8px rgba(124,58,237,0.5)',
+          }}
         />
       </div>
-      <p className="text-sm text-gray-500 mt-1 text-left">{value}%</p>
     </div>
   );
 }
