@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ShieldCheck } from 'lucide-react';
 
 const pdfLinks = [
   { to: '/دمج-pdf', label: 'دمج PDF' },
@@ -27,15 +28,15 @@ const extraLinks = [
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen" style={{ background: '#09090b' }} dir="rtl">
+    <div className="min-h-screen" style={{ background: '#0d0d14' }} dir="rtl">
       {/* ── Sticky glass header ─────────────────────────── */}
       <header
         className="sticky top-0 z-50"
         style={{
-          background: 'rgba(9, 9, 11, 0.88)',
+          background: 'rgba(13, 13, 20, 0.9)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255,255,255,0.07)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
       >
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -87,7 +88,7 @@ export default function Layout({ children }) {
       <footer
         className="mt-20"
         aria-label="تذييل الصفحة"
-        style={{ background: '#09090b', borderTop: '1px solid rgba(255,255,255,0.07)' }}
+        style={{ background: '#0d0d14', borderTop: '1px solid rgba(255,255,255,0.08)' }}
       >
         <div className="max-w-6xl mx-auto px-4 py-14">
           {/* Brand */}
@@ -114,10 +115,13 @@ export default function Layout({ children }) {
 
           <div
             className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.07)', color: '#3f3f46' }}
+            style={{ borderTop: '1px solid rgba(255,255,255,0.08)', color: '#3f3f46' }}
           >
             <span>© {new Date().getFullYear()} أدوات دُرّة — جميع الأدوات مجانية</span>
-            <span>🔒 ملفاتك لا تُرفع لأي سيرفر — خصوصية تامة</span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck size={13} style={{ color: '#a78bfa' }} />
+              ملفاتك لا تُرفع لأي سيرفر — خصوصية تامة
+            </span>
           </div>
         </div>
       </footer>

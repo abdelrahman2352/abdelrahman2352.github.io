@@ -4,6 +4,7 @@ import PrivacyBanner from '../components/PrivacyBanner';
 import FileDropzone from '../components/FileDropzone';
 import ProgressBar from '../components/ProgressBar';
 import { addWatermark, downloadBlob } from '../utils/imageUtils';
+import { Droplets, Loader2, CheckCircle2 } from 'lucide-react';
 
 const POSITIONS = [
   { v: 'bottom-right', l: 'أسفل يسار' },
@@ -79,11 +80,11 @@ export default function WatermarkImages() {
 
       {error && <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">{error}</div>}
       {status === 'processing' && <ProgressBar value={progress} label="جارٍ الإضافة..." />}
-      {status === 'done' && <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-4">✅ تمت الإضافة بنجاح!</div>}
+      {status === 'done' && <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-4 flex items-center gap-2"><CheckCircle2 size={16} /> تمت الإضافة بنجاح!</div>}
 
       <button onClick={handleWatermark} disabled={!files.length || status === 'processing'}
         className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-bold py-4 rounded-xl text-lg transition-colors">
-        {status === 'processing' ? '⏳ جارٍ المعالجة...' : '💧 إضافة العلامة المائية'}
+        {status === 'processing' ? <span className="flex items-center justify-center gap-2"><Loader2 size={18} className="animate-spin-icon" /> جارٍ المعالجة...</span> : <span className="flex items-center justify-center gap-2"><Droplets size={18} /> إضافة العلامة المائية</span>}
       </button>
 
       <section className="mt-12 bg-white rounded-xl border border-gray-100 p-8">

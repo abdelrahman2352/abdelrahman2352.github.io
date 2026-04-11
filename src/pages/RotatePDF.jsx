@@ -5,6 +5,7 @@ import FileDropzone from '../components/FileDropzone';
 import ProgressBar from '../components/ProgressBar';
 import { rotatePages } from '../utils/pdfUtils';
 import { downloadBlob } from '../utils/imageUtils';
+import { RotateCw, Loader2, CheckCircle2 } from 'lucide-react';
 
 export default function RotatePDF() {
   const [file, setFile] = useState(null);
@@ -52,7 +53,7 @@ export default function RotatePDF() {
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6 space-y-4">
         <FileDropzone accept=".pdf" onFiles={f => setFile(f[0])} label="اختر ملف PDF" />
-        {file && <p className="text-sm text-green-600">✅ {file.name}</p>}
+        {file && <p className="text-sm text-green-600 flex items-center gap-1"><CheckCircle2 size={13} /> {file.name}</p>}
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">اتجاه التدوير</label>
@@ -81,11 +82,11 @@ export default function RotatePDF() {
 
       {error && <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">{error}</div>}
       {status === 'processing' && <ProgressBar value={progress} label="جارٍ التدوير..." />}
-      {status === 'done' && <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-4">✅ تم التدوير بنجاح!</div>}
+      {status === 'done' && <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-4 flex items-center gap-2"><CheckCircle2 size={16} /> تم التدوير بنجاح!</div>}
 
       <button onClick={handleRotate} disabled={!file || status === 'processing'}
         className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-bold py-4 rounded-xl text-lg transition-colors">
-        {status === 'processing' ? '⏳ جارٍ المعالجة...' : '🔄 تدوير الصفحات'}
+        {status === 'processing' ? <span className="flex items-center justify-center gap-2"><Loader2 size={18} className="animate-spin-icon" /> جارٍ المعالجة...</span> : <span className="flex items-center justify-center gap-2"><RotateCw size={18} /> تدوير الصفحات</span>}
       </button>
 
       <section className="mt-12 bg-white rounded-xl border border-gray-100 p-8">

@@ -6,31 +6,33 @@ const categoryGradient = (href) => {
   return 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)';
 };
 
-export default function ToolCard({ icon, title, description, href }) {
+export default function ToolCard({ icon: Icon, title, description, href }) {
   return (
     <Link
       to={href}
       className="group flex flex-col gap-4 rounded-2xl p-5 transition-all duration-200"
       style={{
-        background: '#18181b',
+        background: '#13132a',
         border: '1px solid rgba(255,255,255,0.07)',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.border = '1px solid rgba(124,58,237,0.4)';
-        e.currentTarget.style.boxShadow = '0 0 28px rgba(124,58,237,0.15)';
+        e.currentTarget.style.border = '1px solid rgba(124,58,237,0.45)';
+        e.currentTarget.style.boxShadow = '0 0 32px rgba(124,58,237,0.18)';
         e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.background = '#16163a';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
         e.currentTarget.style.boxShadow = 'none';
         e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.background = '#13132a';
       }}
     >
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0"
+        className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
         style={{ background: categoryGradient(href) }}
       >
-        {icon}
+        <Icon size={22} color="#ffffff" strokeWidth={1.75} />
       </div>
       <div>
         <h3 className="font-bold text-white text-base mb-1 leading-snug">{title}</h3>

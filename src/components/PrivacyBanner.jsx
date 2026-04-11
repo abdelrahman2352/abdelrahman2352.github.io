@@ -1,3 +1,5 @@
+import { ShieldCheck } from 'lucide-react';
+
 export default function PrivacyBanner() {
   return (
     <div
@@ -8,10 +10,10 @@ export default function PrivacyBanner() {
       }}
     >
       <div
-        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
+        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
         style={{ background: 'rgba(124,58,237,0.2)' }}
       >
-        🔒
+        <ShieldCheck size={17} style={{ color: '#a78bfa' }} />
       </div>
       <div>
         <p className="font-semibold text-sm text-white">100% يعمل داخل المتصفح</p>

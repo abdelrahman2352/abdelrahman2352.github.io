@@ -4,6 +4,7 @@ import PrivacyBanner from '../components/PrivacyBanner';
 import FileDropzone from '../components/FileDropzone';
 import ProgressBar from '../components/ProgressBar';
 import { compressImage, downloadBlob } from '../utils/imageUtils';
+import { Minimize2, Loader2, CheckCircle2 } from 'lucide-react';
 
 export default function CompressImages() {
   const [files, setFiles] = useState([]);
@@ -82,7 +83,7 @@ export default function CompressImages() {
 
       <button onClick={handleCompress} disabled={!files.length || status === 'processing'}
         className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-bold py-4 rounded-xl text-lg transition-colors">
-        {status === 'processing' ? '⏳ جارٍ الضغط...' : '🗜️ ضغط الصور'}
+        {status === 'processing' ? <span className="flex items-center justify-center gap-2"><Loader2 size={18} className="animate-spin-icon" /> جارٍ الضغط...</span> : <span className="flex items-center justify-center gap-2"><Minimize2 size={18} /> ضغط الصور</span>}
       </button>
 
       <section className="mt-12 bg-white rounded-xl border border-gray-100 p-8">
