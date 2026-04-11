@@ -6,8 +6,8 @@
 @layer base {
   body {
     direction: rtl;
-    font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
-    background-color: #09090b;
+    font-family: 'IBM Plex Sans Arabic', 'Tajawal', Arial, sans-serif;
+    background-color: #0d0d14;
     color: #fafafa;
   }
 }
@@ -32,7 +32,7 @@
     cursor: pointer;
     width: 100%;
     font-size: 1.125rem;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
   }
 
   .btn-violet:hover:not(:disabled) {
@@ -53,10 +53,10 @@
 
 /* Backgrounds */
 .dark-content .bg-white {
-  background-color: #18181b !important;
+  background-color: #18182a !important;
 }
 .dark-content .bg-gray-50 {
-  background-color: #27272a !important;
+  background-color: #1e1e2d !important;
 }
 
 /* Borders */
@@ -67,7 +67,7 @@
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 .dark-content .border-gray-300 {
-  border-color: #3f3f46 !important;
+  border-color: #3a3a52 !important;
 }
 
 /* Text */
@@ -144,7 +144,7 @@
   background-color: #6d28d9 !important;
 }
 .dark-content .disabled\:bg-gray-300:disabled {
-  background-color: #3f3f46 !important;
+  background-color: #3a3a52 !important;
 }
 .dark-content .bg-blue-600.text-white,
 .dark-content .bg-blue-600 {
@@ -165,9 +165,9 @@
 .dark-content input[type="email"],
 .dark-content select,
 .dark-content textarea {
-  background-color: #27272a;
+  background-color: #1e1e2d;
   color: #fafafa;
-  border-color: #3f3f46;
+  border-color: #3a3a52;
 }
 .dark-content input[type="text"]:focus,
 .dark-content input[type="number"]:focus,
@@ -200,7 +200,7 @@
 /* Checkbox / color inputs */
 .dark-content input[type="color"] {
   background: transparent;
-  border-color: #3f3f46;
+  border-color: #3a3a52;
 }
 
 /* bg-indigo-50 used in some highlight sections */
@@ -215,4 +215,14 @@
 }
 .dark-content .to-indigo-50 {
   --tw-gradient-to: rgba(99,102,241,0.06) !important;
+}
+
+/* Spin animation for loading icon */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-icon {
+  animation: spin 1s linear infinite;
+  display: inline-block;
 }

@@ -1,24 +1,45 @@
 import Layout from '../components/Layout';
 import ToolCard from '../components/ToolCard';
 import SEO from '../components/SEO';
+import {
+  Files,
+  Scissors,
+  Trash2,
+  RotateCw,
+  FileImage,
+  ImageDown,
+  Minimize2,
+  ArrowLeftRight,
+  Maximize2,
+  Crop,
+  FlipHorizontal2,
+  Droplets,
+  Frame,
+  Sliders,
+  Contrast,
+  LayoutTemplate,
+  ShieldCheck,
+  BadgeCheck,
+  Globe2,
+} from 'lucide-react';
 
 const tools = [
-  { icon: '📑', title: 'دمج PDF', description: 'ادمج عدة ملفات PDF في ملف واحد بسرعة وسهولة', href: '/دمج-pdf' },
-  { icon: '✂️', title: 'تقسيم PDF', description: 'قسّم ملف PDF إلى أجزاء حسب نطاق الصفحات', href: '/تقسيم-pdf' },
-  { icon: '🗑️', title: 'حذف صفحات PDF', description: 'احذف أو استخرج صفحات محددة من ملف PDF', href: '/حذف-صفحات-pdf' },
-  { icon: '🔄', title: 'تدوير PDF', description: 'دوِّر صفحات PDF يمينًا أو يسارًا أو 180 درجة', href: '/تدوير-pdf' },
-  { icon: '🖼️', title: 'تحويل الصور إلى PDF', description: 'حوِّل صور JPG/PNG/WebP إلى ملف PDF واحد', href: '/تحويل-صور-الى-pdf' },
-  { icon: '📸', title: 'PDF إلى صور', description: 'صدِّر صفحات PDF كصور JPG أو PNG', href: '/pdf-الى-jpg' },
-  { icon: '🗜️', title: 'ضغط الصور', description: 'قلّل حجم صورك مع الحفاظ على الجودة', href: '/ضغط-الصور' },
-  { icon: '🔁', title: 'تحويل صيغ الصور', description: 'حوِّل الصور بين JPG وPNG وWebP', href: '/تحويل-صيغ-الصور' },
-  { icon: '📐', title: 'تغيير حجم الصور', description: 'غيّر أبعاد الصور إلى حجم محدد مع الحفاظ على النسب', href: '/تغيير-حجم-الصور' },
-  { icon: '✂️', title: 'قص الصور بنسبة عرض', description: 'اقطع الصورة من المنتصف لنسب 1:1، 4:3، 16:9 وغيرها', href: '/قص-الصور' },
-  { icon: '🔃', title: 'تدوير وقلب الصور', description: 'دوِّر صورك أو اقلبها أفقيًا أو رأسيًا', href: '/تدوير-وقلب-الصور' },
-  { icon: '💧', title: 'إضافة علامة مائية', description: 'أضف نصًا كعلامة مائية على صورك', href: '/علامة-مائية' },
-  { icon: '🖼️', title: 'إضافة إطار', description: 'أضف إطارًا ملونًا حول صورك بأي لون', href: '/اطار-الصور' },
-  { icon: '🎨', title: 'ضبط الألوان', description: 'عدِّل السطوع والتباين والتشبع اللوني', href: '/ضبط-الالوان' },
-  { icon: '⬛', title: 'تحويل إلى رمادي', description: 'حوِّل صورك الملونة إلى أبيض وأسود', href: '/تحويل-الى-رمادي' },
-  { icon: '⚖️', title: 'ضبط نسبة العرض', description: 'احشو الصورة في نسبة محددة بإضافة خلفية', href: '/ضبط-نسبة-العرض' },
+  { icon: Files, title: 'دمج PDF', description: 'ادمج عدة ملفات PDF في ملف واحد بسرعة وسهولة', href: '/دمج-pdf' },
+  { icon: Scissors, title: 'تقسيم PDF', description: 'قسّم ملف PDF إلى أجزاء حسب نطاق الصفحات', href: '/تقسيم-pdf' },
+  { icon: Trash2, title: 'حذف صفحات PDF', description: 'احذف أو استخرج صفحات محددة من ملف PDF', href: '/حذف-صفحات-pdf' },
+  { icon: RotateCw, title: 'تدوير PDF', description: 'دوِّر صفحات PDF يمينًا أو يسارًا أو 180 درجة', href: '/تدوير-pdf' },
+  { icon: FileImage, title: 'تحويل الصور إلى PDF', description: 'حوِّل صور JPG/PNG/WebP إلى ملف PDF واحد', href: '/تحويل-صور-الى-pdf' },
+  { icon: ImageDown, title: 'PDF إلى صور', description: 'صدِّر صفحات PDF كصور JPG أو PNG', href: '/pdf-الى-jpg' },
+  { icon: Minimize2, title: 'ضغط الصور', description: 'قلّل حجم صورك مع الحفاظ على الجودة', href: '/ضغط-الصور' },
+  { icon: ArrowLeftRight, title: 'تحويل صيغ الصور', description: 'حوِّل الصور بين JPG وPNG وWebP', href: '/تحويل-صيغ-الصور' },
+  { icon: Maximize2, title: 'تغيير حجم الصور', description: 'غيّر أبعاد الصور إلى حجم محدد مع الحفاظ على النسب', href: '/تغيير-حجم-الصور' },
+  { icon: Crop, title: 'قص الصور بنسبة عرض', description: 'اقطع الصورة من المنتصف لنسب 1:1، 4:3، 16:9 وغيرها', href: '/قص-الصور' },
+  { icon: FlipHorizontal2, title: 'تدوير وقلب الصور', description: 'دوِّر صورك أو اقلبها أفقيًا أو رأسيًا', href: '/تدوير-وقلب-الصور' },
+  { icon: Droplets, title: 'إضافة علامة مائية', description: 'أضف نصًا كعلامة مائية على صورك', href: '/علامة-مائية' },
+  { icon: Frame, title: 'إضافة إطار', description: 'أضف إطارًا ملونًا حول صورك بأي لون', href: '/اطار-الصور' },
+  { icon: Sliders, title: 'ضبط الألوان', description: 'عدِّل السطوع والتباين والتشبع اللوني', href: '/ضبط-الالوان' },
+  { icon: Contrast, title: 'تحويل إلى رمادي', description: 'حوِّل صورك الملونة إلى أبيض وأسود', href: '/تحويل-الى-رمادي' },
+  { icon: LayoutTemplate, title: 'ضبط نسبة العرض', description: 'احشو الصورة في نسبة محددة بإضافة خلفية', href: '/ضبط-نسبة-العرض' },
 ];
 
 const faqItems = [
@@ -114,10 +135,10 @@ export default function HomePage() {
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              { icon: '🔒', text: '100% خصوصية', sub: 'يعمل داخل المتصفح' },
-              { icon: '🆓', text: 'مجاني تماماً', sub: 'بدون تسجيل' },
-              { icon: '🇸🇦', text: 'عربي بالكامل', sub: 'واجهة RTL' },
-            ].map(({ icon, text, sub }) => (
+              { Icon: ShieldCheck, text: '100% خصوصية', sub: 'يعمل داخل المتصفح' },
+              { Icon: BadgeCheck, text: 'مجاني تماماً', sub: 'بدون تسجيل' },
+              { Icon: Globe2, text: 'عربي بالكامل', sub: 'واجهة RTL' },
+            ].map(({ Icon, text, sub }) => (
               <div
                 key={text}
                 className="flex items-center gap-2.5 rounded-xl px-4 py-3"
@@ -126,7 +147,7 @@ export default function HomePage() {
                   border: '1px solid rgba(255,255,255,0.08)',
                 }}
               >
-                <span className="text-lg">{icon}</span>
+                <Icon size={20} style={{ color: '#a78bfa' }} strokeWidth={1.75} />
                 <div className="text-right">
                   <p className="text-xs font-bold text-white leading-tight">{text}</p>
                   <p className="text-xs leading-tight" style={{ color: '#52525b' }}>{sub}</p>
@@ -161,7 +182,7 @@ export default function HomePage() {
       <section
         className="rounded-2xl p-8"
         aria-labelledby="faq-heading"
-        style={{ background: '#18181b', border: '1px solid rgba(255,255,255,0.07)' }}
+        style={{ background: '#111120', border: '1px solid rgba(255,255,255,0.08)' }}
       >
         <h2
           id="faq-heading"
