@@ -24,6 +24,7 @@ const extraLinks = [
   { to: '/ضبط-الالوان', label: 'ضبط الألوان' },
   { to: '/تحويل-الى-رمادي', label: 'تحويل إلى رمادي' },
   { to: '/ضبط-نسبة-العرض', label: 'ضبط نسبة العرض' },
+  { to: '/زخارف-عربية', label: 'زخارف عربية' },
 ];
 
 export default function Layout({ children }) {
@@ -103,7 +104,7 @@ export default function Layout({ children }) {
               <span className="text-base font-bold text-white">أدوات دُرّة</span>
             </Link>
             <p className="text-sm max-w-xs" style={{ color: '#52525b' }}>
-              أكثر من 16 أداة مجانية لـ PDF والصور، تعمل كاملةً داخل متصفحك.
+              أكثر من 17 أداة مجانية لـ PDF والصور والنصوص، تعمل كاملةً داخل متصفحك.
             </p>
           </div>
 
