@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   BadgeCheck,
   Globe2,
+  Sparkles,
 } from 'lucide-react';
 
 const tools = [
@@ -42,6 +43,10 @@ const tools = [
   { icon: LayoutTemplate, title: 'ضبط نسبة العرض', description: 'احشو الصورة في نسبة محددة بإضافة خلفية', href: '/ضبط-نسبة-العرض' },
 ];
 
+const textTools = [
+  { icon: Sparkles, title: 'زخارف عربية', description: 'زخرف اسمك أو نصك بأجمل الأنماط العربية وانسخها فورًا', href: '/زخارف-عربية' },
+];
+
 const faqItems = [
   { q: 'هل ملفاتي آمنة؟', a: 'نعم، جميع العمليات تتم على جهازك مباشرة داخل المتصفح. لا نرسل ملفاتك إلى أي سيرفر خارجي على الإطلاق.' },
   { q: 'هل الأدوات مجانية؟', a: 'نعم، جميع الأدوات مجانية تمامًا بدون حدود أو تسجيل أو اشتراك.' },
@@ -52,6 +57,7 @@ const faqItems = [
   { q: 'هل يمكنني تحويل PDF إلى JPG؟', a: 'نعم، أداة "PDF إلى صور" تتيح لك تصدير كل صفحة من ملف PDF كصورة JPG أو PNG بجودة عالية.' },
   { q: 'هل يمكنني استخدام الأدوات بدون إنترنت؟', a: 'بعد تحميل الصفحة لأول مرة، تعمل معظم الأدوات بدون اتصال بالإنترنت لأن كل المعالجة تتم على جهازك.' },
   { q: 'هل الأدوات متاحة باللغة العربية بالكامل؟', a: 'نعم! أدوات دُرّة هي من النادر جدًا — الواجهة والتعليمات والأزرار كلها بالعربية الكاملة، مما يجعلها الخيار الأول للمستخدمين العرب.' },
+  { q: 'ما هي أداة الزخارف العربية؟', a: 'أداة الزخارف العربية تتيح لك كتابة اسمك أو نصك بالعربي وتحويله فورًا إلى أكثر من 32 نمطًا زخرفيًا جميلًا جاهزة للنسخ والمشاركة في واتساب وانستغرام وغيرها.' },
 ];
 
 const jsonLd = {
@@ -129,7 +135,7 @@ export default function HomePage() {
             className="text-lg sm:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
             style={{ color: '#71717a' }}
           >
-            أكثر من 16 أداة مجانية وسريعة — ملفاتك لا تُرفع لأي سيرفر، كل شيء يعمل على جهازك.
+            أكثر من 17 أداة مجانية وسريعة — ملفاتك لا تُرفع لأي سيرفر، كل شيء يعمل على جهازك.
           </p>
 
           {/* Trust badges */}
@@ -169,10 +175,20 @@ export default function HomePage() {
       </section>
 
       {/* ── Image Tools ───────────────────────────────────────── */}
-      <section className="mb-16" aria-labelledby="image-tools-heading">
+      <section className="mb-10" aria-labelledby="image-tools-heading">
         <SectionHeader id="image-tools-heading" label="صور" title="أدوات الصور" count={10} />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {tools.slice(6).map(tool => (
+            <ToolCard key={tool.href} {...tool} />
+          ))}
+        </div>
+      </section>
+
+      {/* ── Text Tools ────────────────────────────────────────── */}
+      <section className="mb-16" aria-labelledby="text-tools-heading">
+        <SectionHeader id="text-tools-heading" label="نص" title="أدوات النص" count={textTools.length} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {textTools.map(tool => (
             <ToolCard key={tool.href} {...tool} />
           ))}
         </div>

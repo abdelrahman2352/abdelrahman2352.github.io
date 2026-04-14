@@ -16,6 +16,7 @@ import BorderImages from './pages/BorderImages';
 import AdjustColors from './pages/AdjustColors';
 import GrayscaleImages from './pages/GrayscaleImages';
 import AspectRatioFitter from './pages/AspectRatioFitter';
+import ArabicDecorations from './pages/ArabicDecorations';
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/ضبط-الالوان" element={<AdjustColors />} />
         <Route path="/تحويل-الى-رمادي" element={<GrayscaleImages />} />
         <Route path="/ضبط-نسبة-العرض" element={<AspectRatioFitter />} />
+        <Route path="/زخارف-عربية" element={<ArabicDecorations />} />
       </Routes>
     </BrowserRouter>
   );
