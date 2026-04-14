@@ -8,10 +8,10 @@ import { Sparkles, Copy, CheckCheck, Type, Layers, Square } from 'lucide-react';
 /** Insert `sep` between every two adjacent non-space characters */
 const interleave = (sep) => (t) => {
   const chars = [...t];
+  const last = chars.length - 1;
   return chars.map((c, i) => {
-    if (i === chars.length - 1) return c;
-    const next = chars[i + 1];
-    if (c === ' ' || next === ' ') return c;
+    if (i === last) return c;
+    if (c === ' ' || chars[i + 1] === ' ') return c;
     return c + sep;
   }).join('');
 };
@@ -155,6 +155,7 @@ const FRAME_STYLES = [
 ];
 
 const TEXT_STYLES = [
+  // Arabic Mathematical Alphabetic Symbols — letters without a Unicode math variant pass through unchanged
   { name: 'رياضي أصيل',        tag: 'رياضي',  fn: toMath(BASE_MAP) },
   { name: 'رياضي حلقي',        tag: 'رياضي',  fn: toMath(LOOPED_MAP) },
   { name: 'رياضي مزدوج',       tag: 'رياضي',  fn: toMath(DOUBLE_MAP) },
@@ -382,7 +383,7 @@ export default function ArabicDecorations() {
                 {/* Style name + tag */}
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-xs font-semibold" style={{ color: '#a78bfa' }}>{style.name}</span>
-                  {style.tag && TAG_COLORS[style.tag] && (
+                  {TAG_COLORS[style.tag] && (
                     <span
                       className="text-xs px-2 py-0.5 rounded-full font-semibold"
                       style={{
